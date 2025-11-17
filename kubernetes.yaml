@@ -38,7 +38,7 @@ spec:
         app: gmoraga-app-backend-test-lab3
     spec:
       containers:
-      - name: gmoraga-app-backend-test-lab3
+      - name: backend-gmoraga
         image: gmoragacm/backend-test-lab3
         imagePullPolicy: Always
         env:

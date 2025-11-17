@@ -75,7 +75,7 @@ pipeline {
             }
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig-docker']) {
-                    sh "kubectl -n gmoraga set image deployments gmoraga-dp gmoraga-app-backend-test-lab3=gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
+                    sh "kubectl -n gmoraga set image deployments gmoraga-dp backend-gmoraga=gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
                 }
             }
         }
