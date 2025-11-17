@@ -47,8 +47,6 @@ pipeline {
         stage('Construir imagen docker') {
             steps {
                 echo 'Iniciando Delivery'
-            }
-            steps {
                 sh 'docker build -t backend-test-lab3 .'
                 script {
                     docker.withRegistry("https://index.docker.io/v1/", "crendencial-docker-hub") {
@@ -59,8 +57,6 @@ pipeline {
 
                     }
                 }
-            }
-            steps {
                 echo 'Fin Delivery'
             }
         }
