@@ -66,5 +66,23 @@ pipeline {
                 echo 'Fin Delivery'
             }
         }
+        stage('Despliegue Continuo') {
+            agent {
+                docker {
+                    image 'alpine/k8s:1.32.2'
+                    reuseNode true
+                }
+            }
+            steps {
+                withKubeConfig([credentialsId: 'kubeconfig-docker']) {
+                    sh "kubectl -n gmoraga set image deployments gmoraga-dp gmoraga-app-backend-test-lab3=gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
+                }
+            }
+        }
+        stage('Fin Pipeline') {
+            steps {
+                echo 'Finalizando pipeline'
+            }
+        }
     }
 }
