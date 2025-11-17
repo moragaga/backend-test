@@ -44,5 +44,25 @@ pipeline {
                 }
             }
         }
+        stage('Construir imagen docker') {
+            steps {
+                echo 'Iniciando Delivery'
+            }
+            steps {
+                sh 'docker build -t backend-test-lab3 .'
+                script {
+                    docker.withRegistry("https://index.docker.io/v1/", "crendencial-docker-hub") {
+                        sh 'docker tag backend-test-lab3 gmoragacm/backend-test-lab3'
+                        sh "docker tag backend-test-lab3 gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
+                        sh 'docker push gmoragacm/backend-test-lab3'
+                        sh "docker push gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
+
+                    }
+                }
+            }
+            steps {
+                echo 'Fin Delivery'
+            }
+        }
     }
 }
