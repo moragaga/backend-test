@@ -56,6 +56,12 @@ pipeline {
                         sh "docker push gmoragacm/backend-test-lab3:${env.BUILD_NUMBER}"
 
                     }
+                    docker.withRegistry("https://ghcr.io", "crendencial-git-hub") {
+                        sh 'docker tag backend-test-lab3 ghcr.io/moragaga/backend-test'
+                        sh "docker tag backend-test-lab3 ghcr.io/moragaga/backend-test:${env.BUILD_NUMBER}"
+                        sh 'docker push ghcr.io/moragaga/backend-test'
+                        sh "docker push ghcr.io/moragaga/backend-test:${env.BUILD_NUMBER}"
+                    }
                 }
                 echo 'Fin Delivery'
             }
