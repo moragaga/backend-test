@@ -20,7 +20,7 @@ type: Opaque
 stringData:
   API_KEY: "3nTTHe<Qiq[O*yNgpkBG"
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gmoraga-dp
