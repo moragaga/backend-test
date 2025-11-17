@@ -9,7 +9,7 @@ pipeline {
         stage('Proceso aplicación') {
             agent {
                 docker {
-                    image: "node:22"
+                    image "node:22"
                 }
             }
             stages {
