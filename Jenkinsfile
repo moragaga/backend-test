@@ -32,13 +32,13 @@ pipeline {
                 }
                 stage('Test y Coverage') {
                     steps {
-                        sh 'Realizando testing'
+                        sh 'echo Realizando testing'
                         sh 'npm run test:cov'
                     }
                 }
                 stage('Build') {
                     steps {
-                        sh 'Realizando build'
+                        sh 'echo Realizando build'
                         sh 'npm run build'
                     }
                 }
